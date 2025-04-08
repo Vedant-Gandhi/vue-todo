@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import {useTodoStore} from "../store/todo"
-const {todos,deleteTodo} = useTodoStore()
+import {storeToRefs} from "pinia"
+const todoStore = useTodoStore()
+const {todos} = storeToRefs(todoStore)
+
+const {deleteTodo} = todoStore
 
 </script>
 <template>
