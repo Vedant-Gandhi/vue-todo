@@ -20,8 +20,9 @@ export const useTodoStore = defineStore('todo', {
             }
             this.todos.push(fullTodo);
         },
-        deleteTodo(todo: Todo) {
-            this.todos = this.todos.filter(t => t.id !== todo.id);
+        deleteTodo(id: string) {
+            
+            this.todos = this.todos.filter(t => t.id !== id);
         },
         updateTodo(id:string, todo: Todo) {
             const index = this.todos.findIndex(t => t.id === id);
