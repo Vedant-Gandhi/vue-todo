@@ -25,7 +25,6 @@ const formData=reactive({
     description: '',
 });
 
-
 const {todos, addNew} = useTodoStore();
 
 const onFormSubmit = () => {
@@ -37,6 +36,10 @@ const onFormSubmit = () => {
             description,
         };
         addNew(todo)
+        alert("Todo added")
+
+        formData.name=""
+        formData.description=""
     }
 };
 
