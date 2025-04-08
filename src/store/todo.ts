@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { getTextOfJSDocComment } from "typescript";
 
 export interface Todo {
     id: string;
@@ -11,8 +12,13 @@ export const useTodoStore = defineStore('todo', {
         todos: [] as Array<Todo>
     }),
     actions: {
-        addNew(todo: Todo) {
-            this.todos.push(todo);
+        addNew(todo: Omit<Todo,"id">) {
+            const uid = Date.now();
+            const fullTodo:Todo ={
+                ...todo,
+                id: String(uid),
+            }
+            this.todos.push(fullTodo);
         },
         deleteTodo(todo: Todo) {
             this.todos = this.todos.filter(t => t.id !== todo.id);
